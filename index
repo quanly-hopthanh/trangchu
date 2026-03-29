@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Quản Lý Điều Hành</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <style>
+        /* Khối định dạng giao diện tổng thể */
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #f4f4f9; 
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            text-align: center; 
+            color: #2c3e50; 
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        
+        /* Khối định dạng danh sách dự án dạng lưới (Grid) tối ưu không gian hiển thị */
+        .project-list { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            list-style-type: none; 
+            padding: 0; 
+            margin: 0;
+        }
+        .project-item { 
+            display: flex;
+            align-items: flex-start;
+            padding: 20px; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px; 
+            background-color: #fafafa; 
+            transition: all 0.3s ease;
+        }
+        .project-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: #fff;
+            transform: translateY(-2px);
+            border-color: #3498db;
+        }
+        
+        /* Khối định dạng Biểu tượng (Icon) */
+        .project-icon {
+            font-size: 40px;
+            color: #3498db;
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+        
+        /* Khối định dạng Nội dung văn bản */
+        .project-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .project-content a { 
+            text-decoration: none; 
+            color: #2c3e50; 
+            font-weight: bold; 
+            font-size: 1.2em; 
+            margin-bottom: 8px;
+        }
+        .project-content a:hover {
+            color: #2980b9;
+        }
+        .project-content p { 
+            margin: 0; 
+            color: #555; 
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+
+        /* Khối thông tin bản quyền */
+        .footer { 
+            margin-top: 40px; 
+            text-align: center; 
+            color: #7f8c8d; 
+            font-size: 1em; 
+            font-weight: bold;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>HỆ THỐNG QUẢN LÝ ĐIỀU HÀNH</h1>
+        
+        <ul class="project-list">
+            
+            <li class="project-item">
+                <span class="material-icons project-icon">calendar_month</span>
+                <div class="project-content">
+                    <a href="https://ungdungquanli.github.io/congvan_lichlamviec_hopthanh/" target="_blank">1. Lịch công tác & Hệ thống văn bản</a>
+                    <p>Quản lý lịch làm việc, lưu trữ và tra cứu hệ thống văn bản đi, đến, văn bản chỉ đạo.</p>
+                </div>
+            </li>
+
+            <li class="project-item">
+                <span class="material-icons project-icon">fact_check</span>
+                <div class="project-content">
+                    <a href="https://ungdungquanli.github.io/kiemtra_hopthanh/" target="_blank">2. Sổ kiểm tra nội bộ</a>
+                    <p>Số hóa hồ sơ, biểu mẫu và theo dõi công tác thanh tra, kiểm tra chuyên môn nghiệp vụ.</p>
+                </div>
+            </li>
+
+            <li class="project-item">
+                <span class="material-icons project-icon">assignment</span>
+                <div class="project-content">
+                    <a href="https://ungdungquanli.github.io/danhgiaketquacongviec_hopthanh/" target="_blank">3. Phiếu giao việc</a>
+                    <p>Phân công nhiệm vụ, theo dõi tiến độ và đánh giá kết quả công việc của cán bộ, giáo viên.</p>
+                </div>
+            </li>
+
+            <li class="project-item">
+                <span class="material-icons project-icon">volunteer_activism</span>
+                <div class="project-content">
+                    <a href="https://testphanmem.github.io/quanlytaitro_hopthanh/" target="_blank">4. Quản lý tài trợ</a>
+                    <p>Theo dõi, thống kê minh bạch các nguồn tài trợ, đóng góp xã hội hóa giáo dục.</p>
+                </div>
+            </li>
+
+            <li class="project-item">
+                <span class="material-icons project-icon">account_balance_wallet</span>
+                <div class="project-content">
+                    <a href="https://testphanmem.github.io/quanlyquy_hopthanh/" target="_blank">5. Quản lý quỹ</a>
+                    <p>Kiểm soát thu chi, báo cáo tài chính các loại quỹ nội bộ của đơn vị.</p>
+                </div>
+            </li>
+
+            <li class="project-item">
+                <span class="material-icons project-icon">school</span>
+                <div class="project-content">
+                    <a href="https://ungdungquanli.github.io/quanlihocsinh_hopthanh/" target="_blank">6. Quản lý học sinh</a>
+                    <p>Quản lý sĩ số, hồ sơ nhân trắc, kết quả học tập và rèn luyện của học sinh.</p>
+                </div>
+            </li>
+
+            <li class="project-item">
+                <span class="material-icons project-icon">groups</span>
+                <div class="project-content">
+                    <a href="https://testphanmem.github.io/nhansu_hopthanh/" target="_blank">7. Quản lý nhân sự</a>
+                    <p>Quản lý hồ sơ viên chức, thông tin trình độ chuyên môn và chất lượng đội ngũ.</p>
+                </div>
+            </li>
+
+            <li class="project-item">
+                <span class="material-icons project-icon">badge</span>
+                <div class="project-content">
+                    <a href="https://ungdungquanli.github.io/quanlychedo_hopthanh/" target="_blank">8. Quản lý chế độ đội ngũ</a>
+                    <p>Theo dõi, quản lý các chế độ chính sách, thâm niên, lương và phụ cấp của giáo viên.</p>
+                </div>
+            </li>
+
+        </ul>
+
+        <div class="footer">
+            <p>Thiết kế và phát triển<br>Hoàng Ngọc Lâm</p>
+        </div>
+    </div>
+
+</body>
+</html>
