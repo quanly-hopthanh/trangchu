@@ -10,18 +10,18 @@
     <style>
         /* Khối định dạng giao diện tổng thể */
         body { 
-            font-family: Arial, sans-serif; 
+            font-family: 'Segoe UI', Arial, sans-serif; /* Phông chữ hiện đại hơn */
             margin: 0; 
             padding: 20px; 
-            background-color: #f4f4f9; 
+            background-color: #f4f7f6; /* Màu nền nhẹ nhàng */
         }
         .container { 
             max-width: 1000px; 
             margin: auto; 
             background: white; 
             padding: 30px; 
-            border-radius: 8px; 
-            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            border-radius: 12px; /* Bo góc nhiều hơn */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Bóng mờ sâu hơn */
         }
         h1 { 
             text-align: center; 
@@ -30,9 +30,10 @@
             padding-bottom: 15px;
             margin-bottom: 30px;
             text-transform: uppercase;
+            font-size: 2em;
         }
         
-        /* Khối định dạng danh sách dự án dạng lưới (Grid) tối ưu không gian hiển thị */
+        /* Khối định dạng danh sách dự án dạng lưới (Grid) */
         .project-list { 
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -47,22 +48,22 @@
             padding: 20px; 
             border: 1px solid #e0e0e0; 
             border-radius: 8px; 
-            background-color: #fafafa; 
-            transition: all 0.3s ease;
+            background-color: transparent; /* Nền trong suốt để hover có màu */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
         }
         .project-item:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            background-color: #fff;
             transform: translateY(-2px);
-            border-color: #3498db;
+            /* Hover border color specific to project type */
         }
         
         /* Khối định dạng Biểu tượng (Icon) */
         .project-icon {
             font-size: 40px;
-            color: #3498db;
             margin-right: 15px;
             margin-top: 2px;
+            /* Specific icon color specific to project type */
         }
         
         /* Khối định dạng Nội dung văn bản */
@@ -74,11 +75,12 @@
             text-decoration: none; 
             color: #2c3e50; 
             font-weight: bold; 
-            font-size: 1.2em; 
+            font-size: 1.25em; 
             margin-bottom: 8px;
+            transition: color 0.2s ease;
         }
         .project-content a:hover {
-            color: #2980b9;
+            /* Hover color specific to project type */
         }
         .project-content p { 
             margin: 0; 
@@ -86,6 +88,63 @@
             line-height: 1.5;
             font-size: 0.95em;
         }
+
+        /* --- PROJECT-SPECIFIC COLOR MAPPING --- */
+        
+        /* Color base palette */
+        :root {
+            --clr-calendar: #3498db;   /* Blue - Lịch công tác */
+            --clr-check: #f1c40f;      /* Yellow - Kiểm tra */
+            --clr-task: #2ecc71;       /* Green - Giao việc */
+            --clr-donate: #e74c3c;     /* Red/Pink - Tài trợ */
+            --clr-fund: #d35400;       /* Dark Orange - Quỹ */
+            --clr-student: #27ae60;    /* Dark Green - Học sinh */
+            --clr-hr: #9b59b6;        /* Purple - Nhân sự */
+            --clr-benefits: #95a5a6;  /* Neutral Gray - Chế độ */
+        }
+
+        /* Styles per project type */
+        .proj-calendar { border-left: 5px solid var(--clr-calendar); }
+        .proj-calendar .project-icon { color: var(--clr-calendar); }
+        .proj-calendar:hover { background-color: #ecf0f1; border-color: var(--clr-calendar); }
+        .proj-calendar .project-content a:hover { color: var(--clr-calendar); }
+
+        .proj-check { border-left: 5px solid var(--clr-check); }
+        .proj-check .project-icon { color: var(--clr-check); }
+        .proj-check:hover { background-color: #fef9e7; border-color: var(--clr-check); }
+        .proj-check .project-content a:hover { color: #f39c12; /* slightly darker yellow */ }
+
+        .proj-task { border-left: 5px solid var(--clr-task); }
+        .proj-task .project-icon { color: var(--clr-task); }
+        .proj-task:hover { background-color: #e8f8f5; border-color: var(--clr-task); }
+        .proj-task .project-content a:hover { color: var(--clr-task); }
+
+        .proj-donate { border-left: 5px solid var(--clr-donate); }
+        .proj-donate .project-icon { color: var(--clr-donate); }
+        .proj-donate:hover { background-color: #fdedec; border-color: var(--clr-donate); }
+        .proj-donate .project-content a:hover { color: var(--clr-donate); }
+
+        .proj-fund { border-left: 5px solid var(--clr-fund); }
+        .proj-fund .project-icon { color: var(--clr-fund); }
+        .proj-fund:hover { background-color: #fdf2e9; border-color: var(--clr-fund); }
+        .proj-fund .project-content a:hover { color: var(--clr-fund); }
+
+        .proj-student { border-left: 5px solid var(--clr-student); }
+        .proj-student .project-icon { color: var(--clr-student); }
+        .proj-student:hover { background-color: #eafaf1; border-color: var(--clr-student); }
+        .proj-student .project-content a:hover { color: var(--clr-student); }
+
+        .proj-hr { border-left: 5px solid var(--clr-hr); }
+        .proj-hr .project-icon { color: var(--clr-hr); }
+        .proj-hr:hover { background-color: #f4ecf7; border-color: var(--clr-hr); }
+        .proj-hr .project-content a:hover { color: var(--clr-hr); }
+
+        .proj-benefits { border-left: 5px solid var(--clr-benefits); }
+        .proj-benefits .project-icon { color: var(--clr-benefits); }
+        .proj-benefits:hover { background-color: #f8f9f9; border-color: var(--clr-benefits); }
+        .proj-benefits .project-content a:hover { color: #7f8c8d; /* darker gray */ }
+
+        /* --- END COLOR MAPPING --- */
 
         /* Khối thông tin bản quyền */
         .footer { 
@@ -106,7 +165,7 @@
         
         <ul class="project-list">
             
-            <li class="project-item">
+            <li class="project-item proj-calendar">
                 <span class="material-icons project-icon">calendar_month</span>
                 <div class="project-content">
                     <a href="https://ungdungquanli.github.io/congvan_lichlamviec_hopthanh/" target="_blank">1. Lịch công tác & Hệ thống văn bản</a>
@@ -114,7 +173,7 @@
                 </div>
             </li>
 
-            <li class="project-item">
+            <li class="project-item proj-check">
                 <span class="material-icons project-icon">fact_check</span>
                 <div class="project-content">
                     <a href="https://ungdungquanli.github.io/kiemtra_hopthanh/" target="_blank">2. Sổ kiểm tra nội bộ</a>
@@ -122,7 +181,7 @@
                 </div>
             </li>
 
-            <li class="project-item">
+            <li class="project-item proj-task">
                 <span class="material-icons project-icon">assignment</span>
                 <div class="project-content">
                     <a href="https://ungdungquanli.github.io/danhgiaketquacongviec_hopthanh/" target="_blank">3. Phiếu giao việc</a>
@@ -130,7 +189,7 @@
                 </div>
             </li>
 
-            <li class="project-item">
+            <li class="project-item proj-donate">
                 <span class="material-icons project-icon">volunteer_activism</span>
                 <div class="project-content">
                     <a href="https://testphanmem.github.io/quanlytaitro_hopthanh/" target="_blank">4. Quản lý tài trợ</a>
@@ -138,7 +197,7 @@
                 </div>
             </li>
 
-            <li class="project-item">
+            <li class="project-item proj-fund">
                 <span class="material-icons project-icon">account_balance_wallet</span>
                 <div class="project-content">
                     <a href="https://testphanmem.github.io/quanlyquy_hopthanh/" target="_blank">5. Quản lý quỹ</a>
@@ -146,7 +205,7 @@
                 </div>
             </li>
 
-            <li class="project-item">
+            <li class="project-item proj-student">
                 <span class="material-icons project-icon">school</span>
                 <div class="project-content">
                     <a href="https://ungdungquanli.github.io/quanlihocsinh_hopthanh/" target="_blank">6. Quản lý học sinh</a>
@@ -154,7 +213,7 @@
                 </div>
             </li>
 
-            <li class="project-item">
+            <li class="project-item proj-hr">
                 <span class="material-icons project-icon">groups</span>
                 <div class="project-content">
                     <a href="https://testphanmem.github.io/nhansu_hopthanh/" target="_blank">7. Quản lý nhân sự</a>
@@ -162,7 +221,7 @@
                 </div>
             </li>
 
-            <li class="project-item">
+            <li class="project-item proj-benefits">
                 <span class="material-icons project-icon">badge</span>
                 <div class="project-content">
                     <a href="https://ungdungquanli.github.io/quanlychedo_hopthanh/" target="_blank">8. Quản lý chế độ đội ngũ</a>
