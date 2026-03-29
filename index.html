@@ -10,27 +10,46 @@
     <style>
         /* Khối định dạng giao diện tổng thể */
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif; /* Phông chữ hiện đại hơn */
+            font-family: 'Segoe UI', Arial, sans-serif; 
             margin: 0; 
             padding: 20px; 
-            background-color: #f4f7f6; /* Màu nền nhẹ nhàng */
+            background-color: #f4f7f6; 
         }
         .container { 
             max-width: 1000px; 
             margin: auto; 
             background: white; 
             padding: 30px; 
-            border-radius: 12px; /* Bo góc nhiều hơn */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Bóng mờ sâu hơn */
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
-        h1 { 
-            text-align: center; 
-            color: #2c3e50; 
+
+        /* Khối định dạng Cấu trúc tiêu đề chứa Logo */
+        .header-main {
+            display: flex;
+            justify-content: center; 
+            align-items: center;    
             border-bottom: 2px solid #3498db;
             padding-bottom: 15px;
             margin-bottom: 30px;
+        }
+
+        /* Khối định dạng ảnh Logo */
+        .school-logo {
+            height: 80px;           
+            width: auto;             
+            margin-right: 20px;      
+            border-radius: 5px;      
+            object-fit: contain;
+        }
+
+        /* Khối định dạng chữ Tiêu đề */
+        h1 { 
+            color: #2c3e50; 
             text-transform: uppercase;
             font-size: 2em;
+            margin: 0;               
+            text-align: left;        
         }
         
         /* Khối định dạng danh sách dự án dạng lưới (Grid) */
@@ -48,14 +67,13 @@
             padding: 20px; 
             border: 1px solid #e0e0e0; 
             border-radius: 8px; 
-            background-color: transparent; /* Nền trong suốt để hover có màu */
+            background-color: transparent; 
             transition: all 0.3s ease-in-out;
             cursor: pointer;
         }
         .project-item:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transform: translateY(-2px);
-            /* Hover border color specific to project type */
         }
         
         /* Khối định dạng Biểu tượng (Icon) */
@@ -63,7 +81,6 @@
             font-size: 40px;
             margin-right: 15px;
             margin-top: 2px;
-            /* Specific icon color specific to project type */
         }
         
         /* Khối định dạng Nội dung văn bản */
@@ -79,9 +96,6 @@
             margin-bottom: 8px;
             transition: color 0.2s ease;
         }
-        .project-content a:hover {
-            /* Hover color specific to project type */
-        }
         .project-content p { 
             margin: 0; 
             color: #555; 
@@ -89,21 +103,18 @@
             font-size: 0.95em;
         }
 
-        /* --- PROJECT-SPECIFIC COLOR MAPPING --- */
-        
-        /* Color base palette */
+        /* --- Bản đồ màu sắc (Color Mapping) theo từng tính chất dự án --- */
         :root {
-            --clr-calendar: #3498db;   /* Blue - Lịch công tác */
-            --clr-check: #f1c40f;      /* Yellow - Kiểm tra */
-            --clr-task: #2ecc71;       /* Green - Giao việc */
-            --clr-donate: #e74c3c;     /* Red/Pink - Tài trợ */
-            --clr-fund: #d35400;       /* Dark Orange - Quỹ */
-            --clr-student: #27ae60;    /* Dark Green - Học sinh */
-            --clr-hr: #9b59b6;        /* Purple - Nhân sự */
-            --clr-benefits: #95a5a6;  /* Neutral Gray - Chế độ */
+            --clr-calendar: #3498db;   
+            --clr-check: #f1c40f;      
+            --clr-task: #2ecc71;       
+            --clr-donate: #e74c3c;     
+            --clr-fund: #d35400;       
+            --clr-student: #27ae60;    
+            --clr-hr: #9b59b6;        
+            --clr-benefits: #95a5a6;  
         }
 
-        /* Styles per project type */
         .proj-calendar { border-left: 5px solid var(--clr-calendar); }
         .proj-calendar .project-icon { color: var(--clr-calendar); }
         .proj-calendar:hover { background-color: #ecf0f1; border-color: var(--clr-calendar); }
@@ -112,7 +123,7 @@
         .proj-check { border-left: 5px solid var(--clr-check); }
         .proj-check .project-icon { color: var(--clr-check); }
         .proj-check:hover { background-color: #fef9e7; border-color: var(--clr-check); }
-        .proj-check .project-content a:hover { color: #f39c12; /* slightly darker yellow */ }
+        .proj-check .project-content a:hover { color: #f39c12; }
 
         .proj-task { border-left: 5px solid var(--clr-task); }
         .proj-task .project-icon { color: var(--clr-task); }
@@ -142,9 +153,7 @@
         .proj-benefits { border-left: 5px solid var(--clr-benefits); }
         .proj-benefits .project-icon { color: var(--clr-benefits); }
         .proj-benefits:hover { background-color: #f8f9f9; border-color: var(--clr-benefits); }
-        .proj-benefits .project-content a:hover { color: #7f8c8d; /* darker gray */ }
-
-        /* --- END COLOR MAPPING --- */
+        .proj-benefits .project-content a:hover { color: #7f8c8d; }
 
         /* Khối thông tin bản quyền */
         .footer { 
@@ -161,7 +170,11 @@
 <body>
 
     <div class="container">
-        <h1>HỆ THỐNG QUẢN LÝ ĐIỀU HÀNH</h1>
+        
+        <div class="header-main">
+            <img src="https://i.ibb.co/SXSKh9xM/Logo-m-i-c-a-tr-ng-H-p-Th-Nh.png" alt="Logo Trường TH&THCS Hợp Thành" class="school-logo">
+            <h1>HỆ THỐNG QUẢN LÝ ĐIỀU HÀNH</h1>
+        </div>
         
         <ul class="project-list">
             
@@ -232,7 +245,7 @@
         </ul>
 
         <div class="footer">
-            <p>Phát triển bởi: Hoàng Ngọc Lâm</p>
+            <p>Thiết kế và phát triển<br>Hoàng Ngọc Lâm</p>
         </div>
     </div>
 
