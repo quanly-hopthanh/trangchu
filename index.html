@@ -24,7 +24,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
 
-        /* Khối định dạng Cấu trúc tiêu đề chứa Logo */
+        /* Khối định dạng Cấu trúc tiêu đề chứa Logo (Đã bổ sung tính năng cố định) */
         .header-main {
             display: flex;
             justify-content: center; 
@@ -32,6 +32,14 @@
             border-bottom: 2px solid #3498db;
             padding-bottom: 15px;
             margin-bottom: 30px;
+            
+            /* --- Bắt đầu phần thêm mới để cố định đầu trang --- */
+            position: sticky;
+            top: -30px; /* Khớp với độ dày padding của container để ghim sát viền */
+            background-color: white; /* Phủ nền trắng để nội dung dưới không hiển thị xuyên qua */
+            z-index: 1000; /* Lớp ưu tiên cao nhất, luôn hiển thị trên cùng */
+            padding-top: 30px; /* Bù lại khoảng trống để cấu trúc không bị méo */
+            /* --- Kết thúc phần thêm mới --- */
         }
 
         /* Khối định dạng ảnh Logo */
