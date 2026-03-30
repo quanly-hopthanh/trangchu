@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hệ Thống Quản Lý Điều Hành</title>
+    
     <link rel="icon" href="https://i.ibb.co/WWrLvNyv/t-i-xu-ng.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <style>
@@ -12,15 +14,18 @@
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
             margin: 0; 
-            padding: 5px 20px 20px 20px; /* Đã thu hẹp khoảng cách từ trên cùng của trang */
+            /* Xóa khoảng trống phía trên cùng để sát viền */
+            padding: 0 20px 20px 20px; 
             background-color: #f4f7f6; 
         }
         .container { 
             max-width: 1000px; 
-            margin: auto; 
+            /* Đẩy khung chứa sát lên mép trên, giữ căn giữa hai bên */
+            margin: 0 auto; 
             background: white; 
-            padding: 10px 30px 30px 30px; /* Đã thu hẹp tối đa khoảng trắng phía trên bên trong hộp */
-            border-radius: 12px; 
+            padding: 0 30px 30px 30px; 
+            /* Làm phẳng 2 góc trên cùng, chỉ bo tròn 2 góc dưới */
+            border-radius: 0 0 12px 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
 
@@ -30,20 +35,20 @@
             justify-content: center; 
             align-items: center;    
             border-bottom: 2px solid #3498db;
-            padding-bottom: 10px; /* Đã thu hẹp khoảng cách viền dưới tiêu đề */
-            margin-bottom: 20px; /* Đã thu hẹp khoảng cách với danh sách dự án */
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
             
-            /* --- Cấu hình cố định đầu trang (Đã điều chỉnh theo khoảng cách mới) --- */
+            /* Cấu hình cố định đầu trang (Đã điều chỉnh sát mép trên) */
             position: sticky;
-            top: -10px; 
+            top: 0; 
             background-color: white; 
             z-index: 1000; 
-            padding-top: 10px; 
+            padding-top: 15px; 
         }
 
         /* Khối định dạng ảnh Logo */
         .school-logo {
-            height: 65px; /* Đã giảm kích thước logo để tiết kiệm không gian chiều dọc */           
+            height: 65px;            
             width: auto;             
             margin-right: 15px;      
             border-radius: 5px;      
@@ -54,7 +59,7 @@
         h1 { 
             color: #2c3e50; 
             text-transform: uppercase;
-            font-size: 1.8em; /* Đã thu nhỏ nhẹ cỡ chữ để cân đối với logo */
+            font-size: 1.8em; 
             margin: 0;               
             text-align: left;        
         }
