@@ -125,6 +125,7 @@
             --clr-student: #27ae60;    
             --clr-hr: #9b59b6;        
             --clr-benefits: #95a5a6;  
+            --clr-bhxh: #1abc9c;      /* Màu Ngọc lam thêm mới cho công cụ BHXH */
         }
 
         .proj-calendar { border-left: 5px solid var(--clr-calendar); }
@@ -166,6 +167,12 @@
         .proj-benefits .project-icon { color: var(--clr-benefits); }
         .proj-benefits:hover { background-color: #f8f9f9; border-color: var(--clr-benefits); }
         .proj-benefits .project-content a:hover { color: #7f8c8d; }
+
+        /* Css thêm mới cho mục BHXH */
+        .proj-bhxh { border-left: 5px solid var(--clr-bhxh); }
+        .proj-bhxh .project-icon { color: var(--clr-bhxh); }
+        .proj-bhxh:hover { background-color: #e8f8f5; border-color: var(--clr-bhxh); }
+        .proj-bhxh .project-content a:hover { color: #16a085; }
 
         /* Khối thông tin bản quyền */
         .footer { 
@@ -254,10 +261,18 @@
                 </div>
             </li>
 
+            <li class="project-item proj-bhxh">
+                <span class="material-icons project-icon">calculate</span>
+                <div class="project-content">
+                    <a href="https://ungdungquanli.github.io/tinh-che-do-bhxh/" target="_blank">9. Tính chế độ BHXH, Hưu trí</a>
+                    <p>Công cụ tính toán chi tiết chế độ nghỉ hưu, trợ cấp thôi việc và BHXH một lần.</p>
+                </div>
+            </li>
+
         </ul>
 
         <div class="footer">
-            <p>Phát triển bởi: Hoàng Ngọc Lâm</p>
+            <p>Thiết kế và phát triển: Hoàng Ngọc Lâm</p>
         </div>
     </div>
 
