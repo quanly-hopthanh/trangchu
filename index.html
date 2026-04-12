@@ -31,25 +31,27 @@
         /* Khối định dạng Cấu trúc tiêu đề chứa Logo */
         .header-main {
             display: flex;
-            justify-content: flex-start; /* Đã điều chỉnh thành flex-start để căn logo sang góc trái */
+            justify-content: center; /* Đưa tiêu đề vào chính giữa khung */
             align-items: center;    
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px; 
             margin-bottom: 20px; 
             
-            /* Cấu hình cố định đầu trang (Đã điều chỉnh sát mép trên) */
+            /* Cấu hình cố định đầu trang */
             position: sticky;
             top: 0; 
             background-color: white; 
             z-index: 1000; 
             padding-top: 15px; 
+            min-height: 65px; /* Đảm bảo chiều cao khung bằng logo */
         }
 
         /* Khối định dạng ảnh Logo */
         .school-logo {
+            position: absolute; /* Định vị độc lập, tách khỏi Flexbox */
+            left: 0; /* Ép sát mép trái của khung header */
             height: 65px;            
             width: auto;             
-            margin-right: 15px;      
             border-radius: 5px;      
             object-fit: contain;
         }
@@ -60,7 +62,9 @@
             text-transform: uppercase;
             font-size: 1.8em; 
             margin: 0;               
-            text-align: left;        
+            text-align: center; /* Đảm bảo văn bản căn giữa */
+            padding-left: 80px; /* Vùng đệm tránh chữ đè lên logo trên màn hình nhỏ */
+            padding-right: 80px; /* Vùng đệm đối xứng giữ chữ ở giữa tuyệt đối */
         }
         
         /* Khối định dạng danh sách dự án dạng lưới (Grid) */
@@ -271,7 +275,7 @@
         </ul>
 
         <div class="footer">
-            <p>Phát triển bởi: Hoàng Ngọc Lâm</p>
+            <p>Thiết kế và phát triển: Hoàng Ngọc Lâm</p>
         </div>
     </div>
 
