@@ -129,6 +129,7 @@
             --clr-hr: #9b59b6;        
             --clr-benefits: #95a5a6;  
             --clr-bhxh: #1abc9c;      /* Màu Ngọc lam thêm mới cho công cụ BHXH */
+            --clr-evaluate: #34495e;  /* Màu Xanh xám đậm cho Đánh giá viên chức */
         }
 
         .proj-calendar { border-left: 5px solid var(--clr-calendar); }
@@ -176,6 +177,12 @@
         .proj-bhxh .project-icon { color: var(--clr-bhxh); }
         .proj-bhxh:hover { background-color: #e8f8f5; border-color: var(--clr-bhxh); }
         .proj-bhxh .project-content a:hover { color: #16a085; }
+
+        /* Css thêm mới cho mục Đánh giá viên chức */
+        .proj-evaluate { border-left: 5px solid var(--clr-evaluate); }
+        .proj-evaluate .project-icon { color: var(--clr-evaluate); }
+        .proj-evaluate:hover { background-color: #ebedef; border-color: var(--clr-evaluate); }
+        .proj-evaluate .project-content a:hover { color: #2c3e50; }
 
         /* Khối thông tin bản quyền */
         .footer { 
@@ -269,6 +276,14 @@
                 <div class="project-content">
                     <a href="https://quanly-hopthanh.github.io/chedo-BHXH-nghihuu/" target="_blank">9. Tính chế độ BHXH, Hưu trí (Có tích hợp AI)</a>
                     <p>Công cụ tính toán chi tiết chế độ nghỉ hưu, trợ cấp thôi việc và BHXH một lần.</p>
+                </div>
+            </li>
+
+            <li class="project-item proj-evaluate">
+                <span class="material-icons project-icon">assignment_ind</span>
+                <div class="project-content">
+                    <a href="https://quanlynhatruong.github.io/danhgiacuoinam/" target="_blank">10. Đánh giá xếp loại viên chức</a>
+                    <p>Hệ thống đánh giá, xếp loại thi đua viên chức và người lao động cuối năm.</p>
                 </div>
             </li>
 
