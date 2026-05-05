@@ -188,7 +188,7 @@
         .proj-grading .project-content a:hover { color: #c2185b; }
 
         /* =========================================================================
-           KHỐI 5: THÔNG TIN BẢN QUYỀN (ĐÃ CHUẨN HÓA LẠI ĐỊNH DẠNG)
+           KHỐI 5: THÔNG TIN BẢN QUYỀN
            ========================================================================= */
         .footer { 
             margin-top: 40px; 
@@ -303,33 +303,54 @@
 
         </ul>
 
-        <!-- Đã chuẩn hóa hiển thị thông tin nhà phát triển trên 2 dòng -->
         <div class="footer">
             <p>Thông tin nhà phát triển: Hoàng Ngọc Lâm<br>Thiết kế và phát triển</p>
         </div>
     </div>
 
 <!-- =========================================================================
-     KHỐI 6: JAVASCRIPT XỬ LÝ SỰ KIỆN
+     KHỐI 6: JAVASCRIPT XỬ LÝ SỰ KIỆN KIỂM TRA MÃ LỖI 404 (SỬ DỤNG PROXY)
      ========================================================================= -->
 <script>
     /**
-     * Tính năng: Kiểm tra trạng thái phản hồi mạng trước khi mở liên kết.
-     * Lưu ý kỹ thuật: Lệnh fetch(no-cors) phát hiện được lỗi đứt kết nối mạng/sập máy chủ,
-     * nhưng không thể đọc được lỗi 403 (từ chối quyền truy cập) do bảo mật của trình duyệt.
+     * Tính năng: Vượt tường lửa trình duyệt (CORS) để đọc mã trạng thái trang đích.
+     * Xử lý: Sử dụng API trung gian (allorigins.win) để "hỏi" xem trang web đích
+     * có tồn tại hay không (Mã 200). Nếu trả về 404 thì báo chưa kích hoạt.
+     * @param {Event} event - Sự kiện nhấp chuột
+     * @param {string} targetUrl - Đường dẫn cần kiểm tra
      */
-    function kiemTraVaMoDungDung(event, url) {
+    function kiemTraVaMoDungDung(event, targetUrl) {
         event.preventDefault(); 
         
-        fetch(url, { method: 'HEAD', mode: 'no-cors' })
+        // Hiện trạng thái chờ
+        document.body.style.cursor = 'wait';
+
+        // Tạo đường dẫn cầu nối (Proxy API)
+        var proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(targetUrl);
+
+        fetch(proxyUrl)
             .then(function(response) {
-                // Mở tab mới khi đường truyền mạng ổn định
-                window.open(url, '_blank');
+                if (response.ok) return response.json();
+                throw new Error('Kết nối trung gian thất bại');
+            })
+            .then(function(data) {
+                // Khôi phục con trỏ chuột
+                document.body.style.cursor = 'default';
+                
+                // data.status.http_code chứa mã trạng thái thực của trang ai.studio
+                if (data.status && data.status.http_code === 200) {
+                    // Nếu thành công (200), mở trang web
+                    window.open(targetUrl, '_blank');
+                } else {
+                    // Nếu là 404 (Page not found) hoặc lỗi khác
+                    alert("Tài khoản chưa kích hoạt");
+                }
             })
             .catch(function(error) {
-                // Cảnh báo khi mất mạng hoặc không thể phân giải tên miền
-                alert("Bạn chưa được kích hoạt");
-                console.error("Lỗi hệ thống: Không thể kết nối tới máy chủ đích.", error);
+                // Xử lý khi rớt mạng hoặc hệ thống kiểm tra bị lỗi
+                document.body.style.cursor = 'default';
+                alert("Tài khoản chưa kích hoạt");
+                console.error("Lỗi xác thực liên kết:", error);
             });
     }
 </script>
