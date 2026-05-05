@@ -9,65 +9,64 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <style>
-        /* Khối định dạng giao diện tổng thể */
+        /* =========================================================================
+           KHỐI 1: ĐỊNH DẠNG GIAO DIỆN TỔNG THỂ
+           ========================================================================= */
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
             margin: 0; 
-            /* Xóa khoảng trống phía trên cùng để sát viền */
             padding: 0 20px 20px 20px; 
             background-color: #f4f7f6; 
         }
         .container { 
             max-width: 1000px; 
-            /* Đẩy khung chứa sát lên mép trên, giữ căn giữa hai bên */
             margin: 0 auto; 
             background: white; 
             padding: 0 30px 30px 30px; 
-            /* Làm phẳng 2 góc trên cùng, chỉ bo tròn 2 góc dưới */
             border-radius: 0 0 12px 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
 
-        /* Khối định dạng Cấu trúc tiêu đề chứa Logo */
+        /* =========================================================================
+           KHỐI 2: ĐỊNH DẠNG CẤU TRÚC TIÊU ĐỀ CHỨA LOGO
+           ========================================================================= */
         .header-main {
             display: flex;
-            justify-content: center; /* Đưa tiêu đề vào chính giữa khung */
+            justify-content: center; 
             align-items: center;    
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px; 
             margin-bottom: 20px; 
-            
-            /* Cấu hình cố định đầu trang */
             position: sticky;
             top: 0; 
             background-color: white; 
             z-index: 1000; 
             padding-top: 15px; 
-            min-height: 65px; /* Đảm bảo chiều cao khung bằng logo */
+            min-height: 65px; 
         }
 
-        /* Khối định dạng ảnh Logo */
         .school-logo {
-            position: absolute; /* Định vị độc lập, tách khỏi Flexbox */
-            left: 0; /* Ép sát mép trái của khung header */
+            position: absolute; 
+            left: 0; 
             height: 65px;            
             width: auto;             
             border-radius: 5px;      
             object-fit: contain;
         }
 
-        /* Khối định dạng chữ Tiêu đề */
         h1 { 
             color: #2c3e50; 
             text-transform: uppercase;
             font-size: 1.8em; 
             margin: 0;               
-            text-align: center; /* Đảm bảo văn bản căn giữa */
-            padding-left: 80px; /* Vùng đệm tránh chữ đè lên logo trên màn hình nhỏ */
-            padding-right: 80px; /* Vùng đệm đối xứng giữ chữ ở giữa tuyệt đối */
+            text-align: center; 
+            padding-left: 80px; 
+            padding-right: 80px; 
         }
         
-        /* Khối định dạng danh sách dự án dạng lưới (Grid) */
+        /* =========================================================================
+           KHỐI 3: ĐỊNH DẠNG DANH SÁCH DỰ ÁN DẠNG LƯỚI
+           ========================================================================= */
         .project-list { 
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -91,14 +90,12 @@
             transform: translateY(-2px);
         }
         
-        /* Khối định dạng Biểu tượng (Icon) */
         .project-icon {
             font-size: 40px;
             margin-right: 15px;
             margin-top: 2px;
         }
         
-        /* Khối định dạng Nội dung văn bản */
         .project-content {
             display: flex;
             flex-direction: column;
@@ -118,7 +115,9 @@
             font-size: 0.95em;
         }
 
-        /* --- Bản đồ màu sắc (Color Mapping) theo từng tính chất dự án --- */
+        /* =========================================================================
+           KHỐI 4: BẢN ĐỒ MÀU SẮC (COLOR MAPPING) THEO DỰ ÁN
+           ========================================================================= */
         :root {
             --clr-calendar: #3498db;   
             --clr-check: #f1c40f;      
@@ -128,9 +127,9 @@
             --clr-student: #27ae60;    
             --clr-hr: #9b59b6;        
             --clr-benefits: #95a5a6;  
-            --clr-bhxh: #1abc9c;      /* Màu Ngọc lam thêm mới cho công cụ BHXH */
-            --clr-evaluate: #34495e;  /* Màu Xanh xám đậm cho Đánh giá viên chức */
-            --clr-grading: #e91e63;   /* Màu Hồng cho Chấm bài thi thông minh */
+            --clr-bhxh: #1abc9c;      
+            --clr-evaluate: #34495e;  
+            --clr-grading: #e91e63;   
         }
 
         .proj-calendar { border-left: 5px solid var(--clr-calendar); }
@@ -173,25 +172,24 @@
         .proj-benefits:hover { background-color: #f8f9f9; border-color: var(--clr-benefits); }
         .proj-benefits .project-content a:hover { color: #7f8c8d; }
 
-        /* Css thêm mới cho mục BHXH */
         .proj-bhxh { border-left: 5px solid var(--clr-bhxh); }
         .proj-bhxh .project-icon { color: var(--clr-bhxh); }
         .proj-bhxh:hover { background-color: #e8f8f5; border-color: var(--clr-bhxh); }
         .proj-bhxh .project-content a:hover { color: #16a085; }
 
-        /* Css thêm mới cho mục Đánh giá viên chức */
         .proj-evaluate { border-left: 5px solid var(--clr-evaluate); }
         .proj-evaluate .project-icon { color: var(--clr-evaluate); }
         .proj-evaluate:hover { background-color: #ebedef; border-color: var(--clr-evaluate); }
         .proj-evaluate .project-content a:hover { color: #2c3e50; }
 
-        /* Css thêm mới cho mục Chấm bài thi thông minh */
         .proj-grading { border-left: 5px solid var(--clr-grading); }
         .proj-grading .project-icon { color: var(--clr-grading); }
         .proj-grading:hover { background-color: #fce4ec; border-color: var(--clr-grading); }
         .proj-grading .project-content a:hover { color: #c2185b; }
 
-        /* Khối thông tin bản quyền */
+        /* =========================================================================
+           KHỐI 5: THÔNG TIN BẢN QUYỀN (ĐÃ CHUẨN HÓA LẠI ĐỊNH DẠNG)
+           ========================================================================= */
         .footer { 
             margin-top: 40px; 
             text-align: center; 
@@ -200,6 +198,7 @@
             font-weight: bold;
             border-top: 1px solid #eee;
             padding-top: 20px;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -294,41 +293,41 @@
                 </div>
             </li>
 
-          <li class="project-item proj-grading">
-    <span class="material-icons project-icon">grading</span>
-    <div class="project-content">
-        <!-- Đã thay đổi href và bổ sung sự kiện onclick gọi hàm kiểm tra -->
-        <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/e0a5b73a-9c9b-42c3-a2b8-054f772a6514?fullscreenApplet=true');">11. Chấm bài thi thông minh</a>
-        <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
-    </div>
-</li>
+            <li class="project-item proj-grading">
+                <span class="material-icons project-icon">grading</span>
+                <div class="project-content">
+                    <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/e0a5b73a-9c9b-42c3-a2b8-054f772a6514?fullscreenApplet=true');">11. Chấm bài thi thông minh</a>
+                    <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
+                </div>
+            </li>
 
         </ul>
 
+        <!-- Đã chuẩn hóa hiển thị thông tin nhà phát triển trên 2 dòng -->
         <div class="footer">
-            <p>Phát triển bởi: Hoàng Ngọc Lâm</p>
+            <p>Thông tin nhà phát triển: Hoàng Ngọc Lâm<br>Thiết kế và phát triển</p>
         </div>
     </div>
+
+<!-- =========================================================================
+     KHỐI 6: JAVASCRIPT XỬ LÝ SỰ KIỆN
+     ========================================================================= -->
 <script>
     /**
-     * Tính năng: Kiểm tra khả năng kết nối tới một liên kết trước khi mở tab mới.
-     * Xử lý: Nếu kết nối thất bại (lỗi mạng, không thể phân giải tên miền, bị chặn kết nối), 
-     *        hiển thị thông báo "Bạn chưa được kích hoạt".
-     * @param {Event} event - Sự kiện nhấp chuột
-     * @param {string} url - Đường dẫn cần kiểm tra và mở
+     * Tính năng: Kiểm tra trạng thái phản hồi mạng trước khi mở liên kết.
+     * Lưu ý kỹ thuật: Lệnh fetch(no-cors) phát hiện được lỗi đứt kết nối mạng/sập máy chủ,
+     * nhưng không thể đọc được lỗi 403 (từ chối quyền truy cập) do bảo mật của trình duyệt.
      */
     function kiemTraVaMoDungDung(event, url) {
-        // Ngăn chặn trình duyệt tự động mở link dạng href="#"
         event.preventDefault(); 
         
-        // Sử dụng mode: 'no-cors' để tuân thủ chuẩn an toàn, tránh lỗi Cross-Origin cơ bản
         fetch(url, { method: 'HEAD', mode: 'no-cors' })
             .then(function(response) {
-                // Nếu ping tới địa chỉ thành công, tiến hành mở tab mới
+                // Mở tab mới khi đường truyền mạng ổn định
                 window.open(url, '_blank');
             })
             .catch(function(error) {
-                // Nếu quá trình ping thất bại (địa chỉ không tồn tại hoặc bị chặn hoàn toàn)
+                // Cảnh báo khi mất mạng hoặc không thể phân giải tên miền
                 alert("Bạn chưa được kích hoạt");
                 console.error("Lỗi hệ thống: Không thể kết nối tới máy chủ đích.", error);
             });
