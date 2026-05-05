@@ -130,6 +130,7 @@
             --clr-benefits: #95a5a6;  
             --clr-bhxh: #1abc9c;      /* Màu Ngọc lam thêm mới cho công cụ BHXH */
             --clr-evaluate: #34495e;  /* Màu Xanh xám đậm cho Đánh giá viên chức */
+            --clr-grading: #e91e63;   /* Màu Hồng cho Chấm bài thi thông minh */
         }
 
         .proj-calendar { border-left: 5px solid var(--clr-calendar); }
@@ -183,6 +184,12 @@
         .proj-evaluate .project-icon { color: var(--clr-evaluate); }
         .proj-evaluate:hover { background-color: #ebedef; border-color: var(--clr-evaluate); }
         .proj-evaluate .project-content a:hover { color: #2c3e50; }
+
+        /* Css thêm mới cho mục Chấm bài thi thông minh */
+        .proj-grading { border-left: 5px solid var(--clr-grading); }
+        .proj-grading .project-icon { color: var(--clr-grading); }
+        .proj-grading:hover { background-color: #fce4ec; border-color: var(--clr-grading); }
+        .proj-grading .project-content a:hover { color: #c2185b; }
 
         /* Khối thông tin bản quyền */
         .footer { 
@@ -284,6 +291,14 @@
                 <div class="project-content">
                     <a href="https://quanlynhatruong.github.io/danhgiacuoinam/" target="_blank">10. Đánh giá xếp loại viên chức</a>
                     <p>Hệ thống đánh giá, xếp loại thi đua viên chức và người lao động cuối năm.</p>
+                </div>
+            </li>
+
+            <li class="project-item proj-grading">
+                <span class="material-icons project-icon">grading</span>
+                <div class="project-content">
+                    <a href="https://ai.studio/apps/5d027303-319b-4a23-b772-c5225aa3f3a7?fullscreenApplet=true" target="_blank">11. Chấm bài thi thông minh</a>
+                    <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
                 </div>
             </li>
 
