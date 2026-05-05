@@ -294,13 +294,14 @@
                 </div>
             </li>
 
-            <li class="project-item proj-grading">
-                <span class="material-icons project-icon">grading</span>
-                <div class="project-content">
-                    <a href="https://ai.studio/apps/5d027303-319b-4a23-b772-c5225aa3f3a7?fullscreenApplet=true" target="_blank">11. Chấm bài thi thông minh</a>
-                    <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
-                </div>
-            </li>
+          <li class="project-item proj-grading">
+    <span class="material-icons project-icon">grading</span>
+    <div class="project-content">
+        <!-- Đã thay đổi href và bổ sung sự kiện onclick gọi hàm kiểm tra -->
+        <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/e0a5b73a-9c9b-42c3-a2b8-054f772a6514?fullscreenApplet=true');">11. Chấm bài thi thông minh</a>
+        <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
+    </div>
+</li>
 
         </ul>
 
@@ -308,6 +309,30 @@
             <p>Phát triển bởi: Hoàng Ngọc Lâm</p>
         </div>
     </div>
-
+<script>
+    /**
+     * Tính năng: Kiểm tra khả năng kết nối tới một liên kết trước khi mở tab mới.
+     * Xử lý: Nếu kết nối thất bại (lỗi mạng, không thể phân giải tên miền, bị chặn kết nối), 
+     *        hiển thị thông báo "Bạn chưa được kích hoạt".
+     * @param {Event} event - Sự kiện nhấp chuột
+     * @param {string} url - Đường dẫn cần kiểm tra và mở
+     */
+    function kiemTraVaMoDungDung(event, url) {
+        // Ngăn chặn trình duyệt tự động mở link dạng href="#"
+        event.preventDefault(); 
+        
+        // Sử dụng mode: 'no-cors' để tuân thủ chuẩn an toàn, tránh lỗi Cross-Origin cơ bản
+        fetch(url, { method: 'HEAD', mode: 'no-cors' })
+            .then(function(response) {
+                // Nếu ping tới địa chỉ thành công, tiến hành mở tab mới
+                window.open(url, '_blank');
+            })
+            .catch(function(error) {
+                // Nếu quá trình ping thất bại (địa chỉ không tồn tại hoặc bị chặn hoàn toàn)
+                alert("Bạn chưa được kích hoạt");
+                console.error("Lỗi hệ thống: Không thể kết nối tới máy chủ đích.", error);
+            });
+    }
+</script>
 </body>
 </html>
