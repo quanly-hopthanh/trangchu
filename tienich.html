@@ -85,6 +85,7 @@
             padding: 20px; 
             border: 1px solid #e0e0e0; 
             border-radius: 8px; 
+            border-left: 5px solid #8e44ad;
             background-color: transparent; 
             transition: all 0.3s ease-in-out;
             cursor: pointer;
@@ -124,10 +125,14 @@
 
         /* --- Bản đồ màu sắc chuyên biệt cho Tiện ích --- */
         :root {
-            --clr-compress: #8e44ad; /* Tím */
-            --clr-grading: #e91e63;  /* Hồng cho Chấm bài thi */
+            --clr-compress: #8e44ad; /* Tím - Nén file */
+            --clr-grading: #e91e63;  /* Hồng - Chấm bài */
+            --clr-tts: #e67e22;      /* Cam - Giọng nói */
+            --clr-game: #00bcd4;     /* Xanh ngọc - Trò chơi */
+            --clr-image: #3f51b5;    /* Xanh chàm - Tạo ảnh */
         }
 
+        /* Định dạng màu sắc các khối tính năng */
         .proj-compress { border-left: 5px solid var(--clr-compress); }
         .proj-compress .project-icon { color: var(--clr-compress); }
         .proj-compress:hover { background-color: #f4ecf7; border-color: var(--clr-compress); }
@@ -137,6 +142,21 @@
         .proj-grading .project-icon { color: var(--clr-grading); }
         .proj-grading:hover { background-color: #fce4ec; border-color: var(--clr-grading); }
         .proj-grading .project-content a:hover { color: var(--clr-grading); }
+
+        .proj-tts { border-left: 5px solid var(--clr-tts); }
+        .proj-tts .project-icon { color: var(--clr-tts); }
+        .proj-tts:hover { background-color: #fdf2e9; border-color: var(--clr-tts); }
+        .proj-tts .project-content a:hover { color: var(--clr-tts); }
+
+        .proj-game { border-left: 5px solid var(--clr-game); }
+        .proj-game .project-icon { color: var(--clr-game); }
+        .proj-game:hover { background-color: #e0f7fa; border-color: var(--clr-game); }
+        .proj-game .project-content a:hover { color: var(--clr-game); }
+
+        .proj-image { border-left: 5px solid var(--clr-image); }
+        .proj-image .project-icon { color: var(--clr-image); }
+        .proj-image:hover { background-color: #e8eaf6; border-color: var(--clr-image); }
+        .proj-image .project-content a:hover { color: var(--clr-image); }
 
         .footer { 
             margin-top: 40px; 
@@ -176,6 +196,30 @@
                 </div>
             </li>
 
+            <li class="project-item proj-tts">
+                <span class="material-icons project-icon">record_voice_over</span>
+                <div class="project-content">
+                    <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/c11a4137-91cd-4f0d-b5a7-61e907bee2a0?fullscreenApplet=true');">3. Chuyển đổi văn bản thành giọng nói</a>
+                    <p>Hệ thống hỗ trợ chuyển đổi văn bản thành giọng nói tự nhiên, phục vụ công tác thiết kế bài giảng điện tử và học liệu.</p>
+                </div>
+            </li>
+
+            <li class="project-item proj-game">
+                <span class="material-icons project-icon">sports_esports</span>
+                <div class="project-content">
+                    <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://aistudio.google.com/apps/e1c2ea9c-124b-4c4e-ab8f-8c41a9aeaf93?fullscreenApplet=true&showPreview=true&showAssistant=true');">4. Trò chơi củng cố kiến thức (Lớp 1-12)</a>
+                    <p>Hệ thống trò chơi thông minh giúp học sinh ôn tập, củng cố và khắc sâu kiến thức các môn học.</p>
+                </div>
+            </li>
+
+            <li class="project-item proj-image">
+                <span class="material-icons project-icon">palette</span>
+                <div class="project-content">
+                    <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/bd9e50f9-ace3-4122-82f7-35a04d3de93e?fullscreenApplet=true');">5. Phần mềm tạo ảnh chuyên nghiệp</a>
+                    <p>Ứng dụng AI thiết kế và sáng tạo hình ảnh chuyên nghiệp, hỗ trợ giáo viên xây dựng đồ dùng dạy học trực quan sinh động.</p>
+                </div>
+            </li>
+
         </ul>
 
         <div class="footer">
@@ -185,8 +229,8 @@
 
 <script>
     /**
-     * Tính năng: Kiểm tra khả năng kết nối tới một liên kết trước khi mở tab mới.
-     * Xử lý: Đã được di chuyển cùng với khối Chấm bài thi thông minh.
+     * Tính năng: Kiểm tra khả năng kết nối tới một liên kết AI Studio trước khi mở tab mới.
+     * Xử lý: Nếu kết nối thất bại (lỗi mạng, không có quyền truy cập, bị chặn), hiển thị thông báo.
      * @param {Event} event - Sự kiện nhấp chuột
      * @param {string} url - Đường dẫn cần kiểm tra và mở
      */
@@ -198,7 +242,7 @@
                 window.open(url, '_blank');
             })
             .catch(function(error) {
-                alert("Bạn chưa được kích hoạt");
+                alert("Bạn chưa được kích hoạt hoặc không có quyền truy cập ứng dụng này.");
                 console.error("Lỗi hệ thống: Không thể kết nối tới máy chủ đích.", error);
             });
     }
