@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', Arial, sans-serif; 
             margin: 0; 
             padding: 0 20px 20px 20px; 
-            background-color: transparent; /* Nền trong suốt để đồng bộ với cha */
+            background-color: transparent; 
         }
         .container { 
             max-width: 1000px; 
@@ -39,7 +39,6 @@
             min-height: 65px;
         }
 
-        /* Nút quay lại điều khiển tắt Iframe ở trang cha */
         .btn-back {
             position: absolute;
             left: 0;
@@ -85,7 +84,6 @@
             padding: 20px; 
             border: 1px solid #e0e0e0; 
             border-radius: 8px; 
-            border-left: 5px solid #8e44ad;
             background-color: transparent; 
             transition: all 0.3s ease-in-out;
             cursor: pointer;
@@ -123,16 +121,15 @@
             font-size: 0.95em;
         }
 
-        /* --- Bản đồ màu sắc chuyên biệt cho Tiện ích --- */
+        /* Bản đồ màu sắc các khối tính năng */
         :root {
-            --clr-compress: #8e44ad; /* Tím - Nén file */
-            --clr-grading: #e91e63;  /* Hồng - Chấm bài */
-            --clr-tts: #e67e22;      /* Cam - Giọng nói */
-            --clr-game: #00bcd4;     /* Xanh ngọc - Trò chơi */
-            --clr-image: #3f51b5;    /* Xanh chàm - Tạo ảnh */
+            --clr-compress: #8e44ad; 
+            --clr-grading: #e91e63;  
+            --clr-tts: #e67e22;      
+            --clr-game: #00bcd4;     
+            --clr-image: #3f51b5;    
         }
 
-        /* Định dạng màu sắc các khối tính năng */
         .proj-compress { border-left: 5px solid var(--clr-compress); }
         .proj-compress .project-icon { color: var(--clr-compress); }
         .proj-compress:hover { background-color: #f4ecf7; border-color: var(--clr-compress); }
@@ -180,6 +177,7 @@
         </div>
 
         <ul class="project-list">
+            
             <li class="project-item proj-compress">
                 <span class="material-icons project-icon">compress</span>
                 <div class="project-content">
@@ -223,27 +221,25 @@
         </ul>
 
         <div class="footer">
-            <p>Phát triển bởi<br>Hoàng Ngọc Lâm</p>
+            <p>Thiết kế và phát triển<br>Hoàng Ngọc Lâm</p>
         </div>
     </div>
 
 <script>
     /**
-     * Tính năng: Kiểm tra khả năng kết nối tới một liên kết AI Studio trước khi mở tab mới.
-     * Xử lý: Nếu kết nối thất bại (lỗi mạng, không có quyền truy cập, bị chặn), hiển thị thông báo.
+     * Tính năng: Kiểm tra khả năng kết nối tới một liên kết trước khi mở tab mới.
      * @param {Event} event - Sự kiện nhấp chuột
      * @param {string} url - Đường dẫn cần kiểm tra và mở
      */
     function kiemTraVaMoDungDung(event, url) {
         event.preventDefault(); 
-        
         fetch(url, { method: 'HEAD', mode: 'no-cors' })
             .then(function(response) {
                 window.open(url, '_blank');
             })
             .catch(function(error) {
                 alert("Bạn chưa được kích hoạt hoặc không có quyền truy cập ứng dụng này.");
-                console.error("Lỗi hệ thống: Không thể kết nối tới máy chủ đích.", error);
+                console.error("Lỗi kết nối:", error);
             });
     }
 </script>
