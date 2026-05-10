@@ -131,6 +131,7 @@
             --clr-bhxh: #1abc9c;      /* Màu Ngọc lam thêm mới cho công cụ BHXH */
             --clr-evaluate: #34495e;  /* Màu Xanh xám đậm cho Đánh giá viên chức */
             --clr-grading: #e91e63;   /* Màu Hồng cho Chấm bài thi thông minh */
+            --clr-utilities: #8e44ad; /* Màu Tím cho Nút tiện ích */
         }
 
         .proj-calendar { border-left: 5px solid var(--clr-calendar); }
@@ -201,6 +202,52 @@
             border-top: 1px solid #eee;
             padding-top: 20px;
         }
+
+        /* --- BỔ SUNG: CÁC KHỐI ĐỊNH DẠNG CHO TÍNH NĂNG TIỆN ÍCH --- */
+        .utility-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .btn-open-utility {
+            background-color: var(--clr-utilities);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-open-utility:hover {
+            background-color: #732d91;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Khung Overlay chứa Iframe File Tiện Ích */
+        .utilities-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            display: none; /* Mặc định ẩn */
+            background-color: #f4f7f6;
+        }
+
+        .utilities-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -210,6 +257,12 @@
         <div class="header-main">
             <img src="https://i.ibb.co/S46wLjDt/logo-tr-ng-TH-THCS-Hop-Thanh3-removebg-preview.png" alt="Logo Trường TH&THCS Hợp Thành" class="school-logo">
             <h1>HỆ THỐNG QUẢN LÝ ĐIỀU HÀNH</h1>
+        </div>
+
+        <div class="utility-bar">
+            <button class="btn-open-utility" onclick="toggleUtilities(true)">
+                <span class="material-icons">build_circle</span> Tiện ích dạy học
+            </button>
         </div>
         
         <ul class="project-list">
@@ -294,26 +347,30 @@
                 </div>
             </li>
 
-          <li class="project-item proj-grading">
-    <span class="material-icons project-icon">grading</span>
-    <div class="project-content">
-        <!-- Đã thay đổi href và bổ sung sự kiện onclick gọi hàm kiểm tra -->
-        <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/e0a5b73a-9c9b-42c3-a2b8-054f772a6514?fullscreenApplet=true');">11. Chấm bài thi thông minh</a>
-        <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
-    </div>
-</li>
+            <li class="project-item proj-grading">
+                <span class="material-icons project-icon">grading</span>
+                <div class="project-content">
+                    <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/e0a5b73a-9c9b-42c3-a2b8-054f772a6514?fullscreenApplet=true');">11. Chấm bài thi thông minh</a>
+                    <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
+                </div>
+            </li>
 
         </ul>
 
         <div class="footer">
-            <p>Phát triển bởi: Hoàng Ngọc Lâm</p>
+            <p>Thiết kế và phát triển<br>Hoàng Ngọc Lâm</p>
         </div>
     </div>
+
+    <div id="utilities-overlay" class="utilities-overlay">
+        <iframe src="tienich.html" class="utilities-iframe" title="Tiện Ích Dạy Học"></iframe>
+    </div>
+
 <script>
     /**
      * Tính năng: Kiểm tra khả năng kết nối tới một liên kết trước khi mở tab mới.
      * Xử lý: Nếu kết nối thất bại (lỗi mạng, không thể phân giải tên miền, bị chặn kết nối), 
-     *        hiển thị thông báo "Bạn chưa được kích hoạt".
+     * hiển thị thông báo "Bạn chưa được kích hoạt".
      * @param {Event} event - Sự kiện nhấp chuột
      * @param {string} url - Đường dẫn cần kiểm tra và mở
      */
@@ -332,6 +389,22 @@
                 alert("Bạn chưa được kích hoạt");
                 console.error("Lỗi hệ thống: Không thể kết nối tới máy chủ đích.", error);
             });
+    }
+
+    /**
+     * Tính năng: Bật/Tắt Lớp phủ chứa Iframe Tiện Ích.
+     * Xử lý: Mở overlay đồng thời khóa thanh cuộn (scroll) ở trang chính.
+     * @param {boolean} isShow - Trạng thái cần thiết lập (true: Hiện, false: Ẩn)
+     */
+    function toggleUtilities(isShow) {
+        var overlay = document.getElementById('utilities-overlay');
+        if (isShow) {
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Ngăn cuộn trang bên dưới
+        } else {
+            overlay.style.display = 'none';
+            document.body.style.overflow = ''; // Phục hồi trạng thái cuộn ban đầu
+        }
     }
 </script>
 </body>
