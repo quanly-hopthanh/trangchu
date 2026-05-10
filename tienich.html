@@ -85,7 +85,6 @@
             padding: 20px; 
             border: 1px solid #e0e0e0; 
             border-radius: 8px; 
-            border-left: 5px solid #8e44ad;
             background-color: transparent; 
             transition: all 0.3s ease-in-out;
             cursor: pointer;
@@ -94,12 +93,10 @@
         .project-item:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transform: translateY(-2px);
-            background-color: #f4ecf7;
         }
 
         .project-icon {
             font-size: 40px;
-            color: #8e44ad;
             margin-right: 15px;
             margin-top: 2px;
         }
@@ -118,14 +115,28 @@
             transition: color 0.2s ease;
         }
 
-        .project-content a:hover { color: #8e44ad; }
-
         .project-content p { 
             margin: 0; 
             color: #555; 
             line-height: 1.5;
             font-size: 0.95em;
         }
+
+        /* --- Bản đồ màu sắc chuyên biệt cho Tiện ích --- */
+        :root {
+            --clr-compress: #8e44ad; /* Tím */
+            --clr-grading: #e91e63;  /* Hồng cho Chấm bài thi */
+        }
+
+        .proj-compress { border-left: 5px solid var(--clr-compress); }
+        .proj-compress .project-icon { color: var(--clr-compress); }
+        .proj-compress:hover { background-color: #f4ecf7; border-color: var(--clr-compress); }
+        .proj-compress .project-content a:hover { color: var(--clr-compress); }
+
+        .proj-grading { border-left: 5px solid var(--clr-grading); }
+        .proj-grading .project-icon { color: var(--clr-grading); }
+        .proj-grading:hover { background-color: #fce4ec; border-color: var(--clr-grading); }
+        .proj-grading .project-content a:hover { color: var(--clr-grading); }
 
         .footer { 
             margin-top: 40px; 
@@ -149,26 +160,48 @@
         </div>
 
         <ul class="project-list">
-            <li class="project-item">
+            <li class="project-item proj-compress">
                 <span class="material-icons project-icon">compress</span>
                 <div class="project-content">
                     <a href="https://tienich-ai.github.io/ungdungnendungluong/" target="_blank">1. Ứng dụng nén file PDF và ảnh</a>
                     <p>Công cụ hỗ trợ giảm dung lượng tệp tin nhanh chóng, thuận tiện cho việc lưu trữ và gửi tài liệu.</p>
                 </div>
             </li>
-             <li class="project-item proj-grading">
+            
+            <li class="project-item proj-grading">
                 <span class="material-icons project-icon">grading</span>
                 <div class="project-content">
-                    <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/e0a5b73a-9c9b-42c3-a2b8-054f772a6514?fullscreenApplet=true');">11. Chấm bài thi thông minh</a>
+                    <a href="#" onclick="kiemTraVaMoDungDung(event, 'https://ai.studio/apps/e0a5b73a-9c9b-42c3-a2b8-054f772a6514?fullscreenApplet=true');">2. Chấm bài thi thông minh</a>
                     <p>Hỗ trợ chấm điểm và phân tích kết quả bài thi tự động, nhanh chóng và chính xác.</p>
                 </div>
             </li>
-            </ul>
+
+        </ul>
 
         <div class="footer">
-            <p>Thiết kế và phát triển<br>Hoàng Ngọc Lâm</p>
+            <p>Phát triển bởi<br>Hoàng Ngọc Lâm</p>
         </div>
     </div>
 
+<script>
+    /**
+     * Tính năng: Kiểm tra khả năng kết nối tới một liên kết trước khi mở tab mới.
+     * Xử lý: Đã được di chuyển cùng với khối Chấm bài thi thông minh.
+     * @param {Event} event - Sự kiện nhấp chuột
+     * @param {string} url - Đường dẫn cần kiểm tra và mở
+     */
+    function kiemTraVaMoDungDung(event, url) {
+        event.preventDefault(); 
+        
+        fetch(url, { method: 'HEAD', mode: 'no-cors' })
+            .then(function(response) {
+                window.open(url, '_blank');
+            })
+            .catch(function(error) {
+                alert("Bạn chưa được kích hoạt");
+                console.error("Lỗi hệ thống: Không thể kết nối tới máy chủ đích.", error);
+            });
+    }
+</script>
 </body>
 </html>
